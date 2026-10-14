@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Swynex Final Project — app development project showcase.">
+  <title>Swynex | Final Project</title>
+  <style>
+    :root {
+      --bg: #f5f7ff;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #5d6880;
+      --primary: #5b4bdb;
+      --primary-dark: #4234b5;
+      --accent: #18b7a0;
+      --border: #e4e8f2;
+      --shadow: 0 18px 50px rgba(35, 42, 90, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1080px, 92%); margin: 0 auto; }
+    header {
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -.5px; }
+    .logo span { color: var(--primary); }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: .95rem; }
+    nav a:hover { color: var(--primary); }
+    .hero {
+      padding: 76px 0 68px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(24,183,160,.16), transparent 28%),
+        radial-gradient(circle at 10% 85%, rgba(91,75,219,.13), transparent 32%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 42px; align-items: center; }
+    .eyebrow {
+      display: inline-block; padding: 7px 12px; border-radius: 999px;
+      background: #eceaff; color: var(--primary-dark); font-weight: 800;
+      font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 1.05; letter-spacing: -2px; margin: 20px 0; }
+    h1 span { color: var(--primary); }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center;
+      padding: 12px 19px; border-radius: 12px; text-decoration: none;
+      font-weight: 800; border: 1px solid transparent; transition: .2s ease;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 24px rgba(91,75,219,.22); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary { background: var(--surface); border-color: var(--border); }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .preview {
+      min-height: 310px; padding: 22px; border: 1px solid rgba(255,255,255,.8);
+      border-radius: 28px; background: linear-gradient(145deg, #5b4bdb, #887cf2 60%, #18b7a0);
+      box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center;
+    }
+    .mock-card {
+      width: min(100%, 300px); background: rgba(255,255,255,.96); border-radius: 20px;
+      padding: 24px; box-shadow: 0 18px 40px rgba(22,20,70,.18); transform: rotate(2deg);
+    }
+    .mock-top { display: flex; gap: 6px; margin-bottom: 24px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #d7d9e6; }
+    .mock-pill { height: 10px; border-radius: 20px; background: #e9eafa; margin: 12px 0; }
+    .mock-pill.wide { width: 90%; height: 14px; background: #dcd8ff; }
+    .mock-pill.medium { width: 68%; }
+    .mock-pill.short { width: 42%; }
+    .mock-boxes { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 20px; }
+    .mock-box { height: 72px; border-radius: 12px; background: #f0efff; }
+    .mock-box:last-child { background: #e2faf5; }
+    section { padding: 68px 0; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -1px; margin: 0 0 12px; }
+    .section-sub { color: var(--muted); max-width: 650px; margin: 0 0 30px; }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+      padding: 24px; box-shadow: 0 8px 28px rgba(35,42,90,.04);
+    }
+    .icon {
+      width: 46px; height: 46px; display: grid; place-items: center;
+      border-radius: 14px; background: #eeecff; color: var(--primary);
+      font-size: 1.35rem; font-weight: 900; margin-bottom: 16px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .card p { color: var(--muted); margin: 0; }
+    .about-box {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+      padding: clamp(24px, 5vw, 42px); box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+    }
+    .checklist { list-style: none; margin: 0; padding: 0; }
+    .checklist li { margin: 10px 0; color: var(--muted); }
+    .checklist li::before { content: "✓"; color: var(--accent); font-weight: 900; margin-right: 10px; }
+    .contact { text-align: center; background: #eeecff; }
+    .contact p { color: var(--muted); max-width: 600px; margin: 0 auto 24px; }
+    footer { padding: 24px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 760px) {
+      .hero { padding: 52px 0; }
+      .hero-grid, .about-box { grid-template-columns: 1fr; }
+      .preview { min-height: 260px; }
+      .cards { grid-template-columns: 1fr; }
+      .nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 14px; }
+      h1 { letter-spacing: -1.3px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">SWYNEX<span>.</span></div>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Final App Development Project</span>
+          <h1>Ideas into <span>digital</span> experiences.</h1>
+          <p class="lead">
+            Welcome to Swynex Final — a project showcase created to present the app,
+            its main screens, and the user experience in a simple, clear way.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#features">Explore Project</a>
+            <a class="btn btn-secondary" href="https://github.com/dharshini251813" target="_blank" rel="noopener noreferrer">View GitHub</a>
+          </div>
+        </div>
+        <div class="preview" aria-label="Decorative app interface illustration">
+          <div class="mock-card">
+            <div class="mock-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="mock-pill wide"></div>
+            <div class="mock-pill medium"></div>
+            <div class="mock-pill short"></div>
+            <div class="mock-boxes"><div class="mock-box"></div><div class="mock-box"></div></div>
+            <div class="mock-pill medium" style="margin-top:22px"></div>
+            <div class="mock-pill wide"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h2 class="section-title">Project highlights</h2>
+        <p class="section-sub">A clean, responsive page to introduce your project and help visitors find the important information.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>Simple User Interface</h3>
+            <p>A clear layout designed to make the project easy to understand and navigate.</p>
+          </article>
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Responsive Design</h3>
+            <p>The page adapts to mobile phones, tablets, and desktop screens.</p>
+          </article>
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Project Showcase</h3>
+            <p>A central place to introduce the project, highlight its purpose, and link to its source code.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-box">
+          <div>
+            <h2 class="section-title">About Swynex</h2>
+            <p class="section-sub" style="margin-bottom:0">
+              This page is a starter homepage for your final Swynex project. Replace the sample descriptions
+              with the exact purpose and features of your app before publishing.
+            </p>
+          </div>
+          <div>
+            <h3>What this page includes</h3>
+            <ul class="checklist">
+              <li>Mobile-friendly layout</li>
+              <li>Project introduction and highlights</li>
+              <li>Navigation links to each section</li>
+              <li>GitHub profile link</li>
+              <li>No extra CSS or JavaScript files required</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Explore the project</h2>
+        <p>Visit the GitHub profile to find the Swynex project repository and its source files.</p>
+        <a class="btn btn-primary" href="https://github.com/dharshini251813" target="_blank" rel="noopener noreferrer">Open GitHub Profile</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year">2026</span> Swynex Final Project · Built with HTML and CSS</div>
+  </footer>
+</body>
+</html>
