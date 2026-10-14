@@ -1,0 +1,7 @@
+PocketSpend demo (about 45–60 seconds)
+
+Hi everyone! This is PocketSpend, my Task 4 final app project.
+
+The dashboard shows my current balance, total income, and total expenses. To add an entry, I enter a description and amount, choose a category, and select whether it is income or an expense. After tapping Add transaction, the dashboard updates and the transaction appears in the history. I can filter the history to show only income or expenses. I can also long-press a transaction to delete it. The app saves entries locally on the device, so the data remains available when I reopen the app.
+
+This project helped me practice Android development with Kotlin, UI design, validation, and local storage. Thank you for watching!

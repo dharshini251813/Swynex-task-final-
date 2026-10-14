@@ -1,0 +1,77 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#F7F8FC" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="POCKETSPEND" android:textColor="#5B5FEF" android:textStyle="bold" android:textSize="12sp" android:letterSpacing="0.12" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Your money, clearly." android:textColor="#171A2C" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="5dp" />
+            </LinearLayout>
+            <TextView android:layout_width="44dp" android:layout_height="44dp" android:gravity="center"
+                android:text="PS" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp"
+                android:background="@drawable/avatar_bg" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/monthLabel" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="THIS MONTH" android:textColor="#777B8D" android:textStyle="bold" android:textSize="12sp" android:layout_marginTop="24dp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="22dp" android:layout_marginTop="10dp"
+            android:background="@drawable/card_primary">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Total balance" android:textColor="#E6E7FF" android:textSize="14sp" />
+            <TextView android:id="@+id/balanceText" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="₹ 0.00" android:textColor="#FFFFFF" android:textSize="32sp" android:textStyle="bold" android:layout_marginTop="5dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="24dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="↑  INCOME" android:textColor="#D5FBEA" android:textSize="11sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/incomeText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹ 0.00" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="6dp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="↓  EXPENSES" android:textColor="#FFE0E6" android:textSize="11sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/expenseText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹ 0.00" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical"
+            android:orientation="horizontal" android:layout_marginTop="26dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="Recent transactions" android:textColor="#171A2C" android:textSize="19sp" android:textStyle="bold" />
+            <Spinner android:id="@+id/filterSpinner" android:layout_width="112dp" android:layout_height="42dp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/transactionList" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginTop="8dp" />
+
+        <TextView android:id="@+id/emptyText" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="No transactions yet. Add your first one below!" android:textColor="#777B8D" android:textSize="14sp"
+            android:gravity="center" android:padding="22dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add a transaction"
+            android:textColor="#171A2C" android:textSize="19sp" android:textStyle="bold" android:layout_marginTop="18dp" />
+        <EditText android:id="@+id/titleInput" android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="What was it for?" android:singleLine="true" android:paddingHorizontal="14dp" android:background="@drawable/input_bg"
+            android:layout_marginTop="12dp" android:inputType="textCapSentences" />
+        <EditText android:id="@+id/amountInput" android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Amount (e.g. 250)" android:singleLine="true" android:paddingHorizontal="14dp" android:background="@drawable/input_bg"
+            android:layout_marginTop="10dp" android:inputType="numberDecimal" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="10dp">
+            <Spinner android:id="@+id/categorySpinner" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:background="@drawable/input_bg" android:paddingHorizontal="8dp" />
+            <Spinner android:id="@+id/typeSpinner" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_marginStart="10dp" android:background="@drawable/input_bg" android:paddingHorizontal="8dp" />
+        </LinearLayout>
+        <Button android:id="@+id/addButton" android:layout_width="match_parent" android:layout_height="54dp"
+            android:text="+  Add transaction" android:textAllCaps="false" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#FFFFFF" android:backgroundTint="#5B5FEF" android:layout_marginTop="14dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Your transactions are saved on this device." android:textColor="#8A8D9C" android:textSize="12sp"
+            android:gravity="center" android:layout_marginTop="16dp" android:layout_marginBottom="20dp" />
+    </LinearLayout>
+</ScrollView>

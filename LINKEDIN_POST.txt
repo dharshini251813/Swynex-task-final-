@@ -1,0 +1,19 @@
+🚀 Task 4 – Final App Project: PocketSpend Expense Tracker
+
+I'm excited to share my final app project, PocketSpend! 💸
+
+PocketSpend is an Android expense tracker designed to make it easier to record income and expenses, organize transactions by category, and view a simple balance summary.
+
+✨ Key features:
+• Add income and expense transactions
+• Organize entries by category
+• View balance, income, and expenses
+• Filter transaction history
+• Save data locally on the device
+
+Building this project helped me practice Kotlin, Android UI design, input validation, and local data storage.
+
+📱 Project: PocketSpend – Expense Tracker
+🔗 GitHub: [Add your GitHub repository URL]
+
+#AndroidDevelopment #Kotlin #AppDevelopment #ExpenseTracker #MobileApp #GitHub #StudentProject #Learning
